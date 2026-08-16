@@ -22,10 +22,14 @@ class Config:
         self.SESSION2 = getenv("SESSION2", None)
         self.SESSION3 = getenv("SESSION3", None)
 
-        self.SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "")
-        self.SUPPORT_CHAT = getenv("SUPPORT_CHAT", "")
+        self.SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/yorifederation")
+        self.SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/+nzIAZDVK_61lZDQ9")
 
-        self.JOIN_CHANNEL = getenv("JOIN_CHANNEL", "")
+        self.JOIN_CHANNEL = getenv("JOIN_CHANNEL", "yorifederation")
+
+        # Web server (health check + landing page). Render injects PORT.
+        self.PORT = int(getenv("PORT", 8080))
+        self.WEB_ENABLE: bool = getenv("WEB_ENABLE", "True").lower() == "true"
 
         self.AUTO_LEAVE: bool = getenv("AUTO_LEAVE", "False").lower() == "true"
         self.AUTO_END: bool = getenv("AUTO_END", "False").lower() == "true"

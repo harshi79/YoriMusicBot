@@ -61,6 +61,9 @@ thumb = Thumbnail()
 from yori.core.calls import TgCall
 yori = TgCall()
 
+from yori.core.web import WebServer
+web = WebServer()
+
 
 async def stop() -> None:
     logger.info("Stopping...")
@@ -75,5 +78,6 @@ async def stop() -> None:
     await userbot.exit()
     await db.close()
     await thumb.close()
+    await web.close()
 
     logger.info("Stopped.\n")

@@ -41,12 +41,22 @@
         },
         "SUPPORT_CHAT": {
             "description": "Support chat link shown in the menus (optional).",
-            "value": "",
+            "value": "https://t.me/+nzIAZDVK_61lZDQ9",
             "required": false
         },
         "SUPPORT_CHANNEL": {
             "description": "Support channel link shown in the menus (optional).",
-            "value": "",
+            "value": "https://t.me/yorifederation",
+            "required": false
+        },
+        "JOIN_CHANNEL": {
+            "description": "Channel the assistant auto-joins on startup (optional).",
+            "value": "yorifederation",
+            "required": false
+        },
+        "WEB_ENABLE": {
+            "description": "Serve the landing page and /health endpoint.",
+            "value": "True",
             "required": false
         }
     }

@@ -10,3 +10,7 @@ __pycache__/
 yori/cookies/*.txt
 *.session
 *.session-journal
+.git/
+.github/
+art/
+README.md

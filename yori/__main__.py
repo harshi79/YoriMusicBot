@@ -9,7 +9,7 @@ import importlib
 from contextlib import suppress
 
 from yori import (yori, app, config, db, logger,
-                   stop, thumb, userbot, yt)
+                   stop, thumb, userbot, web, yt)
 from yori.plugins import all_modules
 
 
@@ -23,6 +23,10 @@ async def idle():
     await stop_event.wait()
 
 async def main():
+    # Bind $PORT first: Render fails a Web Service deploy if nothing is
+    # listening shortly after boot, and Telegram/Mongo startup can be slow.
+    await web.start()
+
     await db.connect()
     await app.boot()
     await userbot.boot()
