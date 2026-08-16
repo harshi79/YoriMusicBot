@@ -1,0 +1,53 @@
+{
+    "name": "YoriMusic",
+    "description": "A Telegram Music Player Bot with advanced moderation, written in Python with Pyrogram and Py-Tgcalls.",
+    "keywords": ["python3", "telegram", "bot", "music-bot"],
+    "stack": "container",
+    "env": {
+        "API_ID": {
+            "description": "Get this value from https://my.telegram.org",
+            "value": "",
+            "required": true
+        },
+        "API_HASH": {
+            "description": "Get this value from https://my.telegram.org",
+            "value": "",
+            "required": true
+        },
+        "BOT_TOKEN": {
+            "description": "A Bot's token from Botfather",
+            "value": "",
+            "required": true
+        },
+        "MONGO_URL": {
+            "description": "Get a mongodb url from https://cloud.mongodb.com.",
+            "value": "",
+            "required": true
+        },
+        "LOGGER_ID": {
+            "description": "Your log group ID, add your bot there and promote as an admin.",
+            "value": "",
+            "required": true
+        },
+        "OWNER_ID": {
+            "description": "The user id of user whom you would like to add as OWNER.",
+            "value": "",
+            "required": true
+        },
+        "SESSION": {
+            "description": "A Pyrogram v2 String Session from @StringFatherBot on Telegram.",
+            "value": "",
+            "required": true
+        },
+        "SUPPORT_CHAT": {
+            "description": "Support chat link shown in the menus (optional).",
+            "value": "",
+            "required": false
+        },
+        "SUPPORT_CHANNEL": {
+            "description": "Support channel link shown in the menus (optional).",
+            "value": "",
+            "required": false
+        }
+    }
+}
