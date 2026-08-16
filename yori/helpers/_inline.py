@@ -162,7 +162,7 @@ class Inline:
                 [
                     self.ikb(
                         text=lang["source"],
-                        url="https://github.com/harshi79/YoriMusicBot",
+                        url="https://t.me/yorichiiprime",
                     )
                 ]
             ]

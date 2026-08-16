@@ -34,7 +34,7 @@ Built with **Python**, **Pyrogram**, **Py-TgCalls / ntgcalls**, **FFmpeg** and *
 
 ### 1. Clone
 ```bash
-git clone https://github.com/harshi79/YoriMusicBot.git
+git clone https://t.me/yorichiiprime
 cd YoriMusicBot
 ```
 
