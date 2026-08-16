@@ -52,9 +52,14 @@ Fill in the values (see [sample.env](sample.env)):
 | `LOGGER_ID` | Log group ID (bot must be admin there) |
 | `OWNER_ID` | Your Telegram user ID |
 | `SESSION` | Pyrogram string session for the assistant account (@StringFatherBot) |
-| `SUPPORT_CHAT` / `SUPPORT_CHANNEL` | Optional links shown in the bot menus |
-| `JOIN_CHANNEL` | Optional channel the assistant joins on startup |
+| `SUPPORT_CHAT` / `SUPPORT_CHANNEL` | Links shown in the bot menus (default to the YoriMusic group/channel; set empty to hide) |
+| `JOIN_CHANNEL` | Channel the assistant joins on startup |
+| `PORT` / `WEB_ENABLE` | Web server port and on/off switch (Render sets `PORT` for you) |
 | `DEFAULT_THUMB` / `PING_IMG` / `START_IMG` | Artwork (local paths or URLs) |
+
+> Branded artwork lives in [`assets/`](assets). Use `assets/avatar.png` as the bot's
+> profile picture in @BotFather. Source art and the regeneration script are in
+> [`art/`](art/README.md).
 
 ### 3. Run
 ```bash
@@ -65,8 +70,33 @@ bash start     # starts the bot
 ### Docker
 ```bash
 docker build -t yorimusic .
-docker run -d --env-file .env --restart unless-stopped yorimusic
+docker run -d --env-file .env -p 8080:8080 --restart unless-stopped yorimusic
 ```
+
+### Deploy free on Render
+
+The bot ships a small web server, so it can run as a **free Render Web Service**
+(the free tier has no Worker plan) and doubles as the project's website.
+
+1. Push this repo to GitHub and create a **New → Blueprint** on
+   [Render](https://render.com), pointing at [`render.yaml`](render.yaml) —
+   or create a Web Service with **Runtime: Docker** manually.
+2. Add the required secrets (`API_ID`, `API_HASH`, `BOT_TOKEN`, `MONGO_URL`,
+   `LOGGER_ID`, `OWNER_ID`, `SESSION`) in the dashboard.
+3. Deploy. Your site is live at `https://<your-app>.onrender.com`.
+
+> **Keep it awake:** free instances sleep after ~15 minutes of no traffic.
+> Point [UptimeRobot](https://uptimerobot.com) at
+> `https://<your-app>.onrender.com/health` with a 5-minute interval.
+
+| Endpoint | Purpose |
+| --- | --- |
+| `/` | Landing page (source in [`web/`](web)) |
+| `/health` | Returns `200 OK` with JSON `{"status":"ok","uptime":N}` — for uptime monitors |
+| `/healthz`, `/ping` | Aliases of `/health` |
+
+`/health` never touches Telegram or MongoDB, so a slow database can't make your
+monitor flap. Set `WEB_ENABLE=False` to turn the server off.
 
 ## 📖 Commands
 
@@ -83,6 +113,11 @@ docker run -d --env-file .env --restart unless-stopped yorimusic
 | `/broadcast` `/stats` `/restart` `/maintenance` | Owner tools |
 
 Use `/help` inside the bot for the full, language-localised menu.
+
+## 💬 Community
+
+- Channel — [@yorifederation](https://t.me/yorifederation)
+- Support group — [join here](https://t.me/+nzIAZDVK_61lZDQ9)
 
 ## 📄 License
 

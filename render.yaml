@@ -1,0 +1,50 @@
+# Render blueprint — https://render.com/docs/blueprint-spec
+#
+# Deploys YoriMusic as a free Web Service. A Web Service (not a Worker) is
+# required on the free tier, which is why the bot also serves /health.
+#
+# Free instances are spun down after ~15 minutes without inbound traffic, and
+# take ~1 minute to wake. Point UptimeRobot at https://<your-app>.onrender.com/health
+# on a 5-minute interval to keep it warm.
+
+services:
+  - type: web
+    name: yorimusic
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      # ---- required: set these in the Render dashboard ----
+      - key: API_ID
+        sync: false
+      - key: API_HASH
+        sync: false
+      - key: BOT_TOKEN
+        sync: false
+      - key: MONGO_URL
+        sync: false
+      - key: LOGGER_ID
+        sync: false
+      - key: OWNER_ID
+        sync: false
+      - key: SESSION
+        sync: false
+
+      # ---- optional extra assistants ----
+      - key: SESSION2
+        sync: false
+      - key: SESSION3
+        sync: false
+
+      # ---- support links (defaults live in config.py) ----
+      - key: SUPPORT_CHANNEL
+        value: https://t.me/yorifederation
+      - key: SUPPORT_CHAT
+        value: https://t.me/+nzIAZDVK_61lZDQ9
+      - key: JOIN_CHANNEL
+        value: yorifederation
+
+      - key: WEB_ENABLE
+        value: "True"

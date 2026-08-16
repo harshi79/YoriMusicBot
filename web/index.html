@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YoriMusic — Telegram Music Bot</title>
+<meta name="description" content="YoriMusic streams high-quality audio and video into Telegram group voice chats, with a full moderation toolkit built in.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="YoriMusic — Telegram Music Bot">
+<meta property="og:description" content="Stream audio and video into Telegram group voice chats, with a full moderation toolkit built in.">
+<meta property="og:image" content="/assets/start.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#14131f">
+
+<link rel="icon" type="image/png" href="/assets/avatar.png">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="brand" href="/">
+    <img src="/assets/avatar.png" alt="" width="36" height="36">
+    <span>YoriMusic</span>
+  </a>
+  <nav>
+    <a href="#features">Features</a>
+    <a href="#commands">Commands</a>
+    <a href="#deploy">Deploy</a>
+    <a class="ghost" href="https://github.com/harshi79/YoriMusicBot" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="hero-art">
+      <img src="/assets/start.jpg" alt="YoriMusic artwork — a girl listening to music on a rooftop at dusk" fetchpriority="high">
+    </div>
+    <div class="hero-copy">
+      <p class="eyebrow">Telegram Voice Chat Player</p>
+      <h1>Music, in your group.</h1>
+      <p class="lede">
+        YoriMusic streams high-quality audio and video straight into Telegram
+        group voice chats — with queues, inline controls and a full moderation
+        toolkit built in.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="https://t.me/+nzIAZDVK_61lZDQ9" target="_blank" rel="noopener">Join the Group</a>
+        <a class="btn" href="https://t.me/yorifederation" target="_blank" rel="noopener">Our Channel</a>
+      </div>
+      <p class="micro">Free &amp; open source · MIT licensed</p>
+    </div>
+  </section>
+
+  <section id="features" class="features">
+    <h2>What it does</h2>
+    <div class="grid">
+
+      <article class="card">
+        <h3>Audio &amp; video playback</h3>
+        <p>Stream into voice chats with <code>/play</code> and <code>/vplay</code>. Sources include YouTube, Spotify, Apple Music, SoundCloud, Resso, M3U8 live streams and Telegram files.</p>
+      </article>
+
+      <article class="card">
+        <h3>Real queue control</h3>
+        <p>Auto-play, loop, shuffle, seek, skip-to-track and replay — driven by inline buttons instead of remembering commands.</p>
+      </article>
+
+      <article class="card">
+        <h3>Moderation built in</h3>
+        <p>Admin-only playback, authorised users, sudo tiers, chat blacklisting, global bans and clean-mode auto-deletion.</p>
+      </article>
+
+      <article class="card">
+        <h3>13 languages</h3>
+        <p>Arabic, German, English, Spanish, French, Hindi, Japanese, Burmese, Punjabi, Portuguese, Russian, Turkish and Chinese.</p>
+      </article>
+
+      <article class="card">
+        <h3>Generated thumbnails</h3>
+        <p>Every track gets a rendered now-playing card with artwork, title, channel and a progress bar.</p>
+      </article>
+
+      <article class="card">
+        <h3>Scales with you</h3>
+        <p>Up to three assistant accounts, auto-leave on idle voice chats, duration limits and owner broadcast tools.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="showcase">
+    <figure>
+      <img src="/assets/ping.jpg" alt="YoriMusic status artwork — a desk with a mixing console and retro monitor" loading="lazy">
+      <figcaption>Live status &amp; system stats</figcaption>
+    </figure>
+    <figure>
+      <img src="/assets/thumb.jpg" alt="YoriMusic now-playing artwork — listening in moonlight" loading="lazy">
+      <figcaption>Now-playing cards</figcaption>
+    </figure>
+  </section>
+
+  <section id="commands" class="commands">
+    <h2>Commands</h2>
+    <div class="table-wrap">
+      <table>
+        <tbody>
+          <tr><td><code>/play</code> <code>/vplay</code></td><td>Play audio or video from a query, URL or replied media</td></tr>
+          <tr><td><code>/pause</code> <code>/resume</code> <code>/skip</code> <code>/stop</code></td><td>Playback controls</td></tr>
+          <tr><td><code>/seek</code> <code>/loop</code> <code>/shuffle</code></td><td>Seek, loop and shuffle the queue</td></tr>
+          <tr><td><code>/queue</code> <code>/playing</code></td><td>View the queue or the current track</td></tr>
+          <tr><td><code>/settings</code></td><td>Admin-only mode, clean-mode and language</td></tr>
+          <tr><td><code>/auth</code> <code>/blacklistchat</code></td><td>Authorised users and chat blocking</td></tr>
+          <tr><td><code>/addsudo</code> <code>/delsudo</code></td><td>Manage sudo users (owner only)</td></tr>
+          <tr><td><code>/broadcast</code> <code>/stats</code> <code>/restart</code></td><td>Owner tools</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="micro">Run <code>/help</code> in the bot for the full localised menu.</p>
+  </section>
+
+  <section id="deploy" class="deploy">
+    <h2>Run your own</h2>
+    <p class="lede">Self-host in a couple of minutes. You'll need Telegram API credentials, a bot token, a MongoDB URL and a Pyrogram string session.</p>
+<pre><code>git clone https://github.com/harshi79/YoriMusicBot.git
+cd YoriMusicBot
+cp sample.env .env   # fill in your values
+docker build -t yorimusic .
+docker run -d --env-file .env -p 8080:8080 yorimusic</code></pre>
+    <div class="cta">
+      <a class="btn primary" href="https://github.com/harshi79/YoriMusicBot" target="_blank" rel="noopener">View on GitHub</a>
+      <a class="btn" href="https://t.me/+nzIAZDVK_61lZDQ9" target="_blank" rel="noopener">Get help</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <div>
+      <strong>YoriMusic</strong>
+      <p class="micro">MIT licensed. Rebranded from <a href="https://github.com/AnonymousX1025/AnonXMusic" target="_blank" rel="noopener">AnonXMusic</a>.</p>
+    </div>
+    <div class="foot-links">
+      <a href="https://t.me/yorifederation" target="_blank" rel="noopener">Channel</a>
+      <a href="https://t.me/+nzIAZDVK_61lZDQ9" target="_blank" rel="noopener">Group</a>
+      <a href="https://github.com/harshi79/YoriMusicBot" target="_blank" rel="noopener">Source</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
